@@ -10,5 +10,5 @@ The fraud detection model evaluates credit card transactions based on factors li
 Follow [OpenShift AI tutorial - Fraud detection example](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2-latest/html/openshift_ai_tutorial_-_fraud_detection_example/index) to train and deploy the fraud detection model using OpenShift AI Sandbox without any local setup needed. By the end of 4.2 you will have the applicaiton up and running on OpenShift AI
 
 ## Integrate the AI Model into your application
-Integrate the fraud detection AI Model into your API that tells if a transaction is fraud or not
+Integrate the fraud detection AI Model into your API that tells if a transaction is fraud or not. See [app.py](https://github.com/yashwanthm/ai-fraud-detection-demo-api/blob/main/app.py) for details
 
