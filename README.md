@@ -3,7 +3,7 @@ In this demo, we train and deploy a model using OpenShift AI, then integrate it 
 
 You will need to finish the steps in [OpenShift AI tutorial - Fraud detection example](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2-latest/html/openshift_ai_tutorial_-_fraud_detection_example/index) before continuing
 
-![Screenshot](image.png)
+![Screenshot](images/overview.png)
 
 
 ## About the fraud detection model
