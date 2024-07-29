@@ -12,3 +12,42 @@ Follow [OpenShift AI tutorial - Fraud detection example](https://docs.redhat.com
 ## Integrate the AI Model into your application
 Integrate the fraud detection AI Model into your API that tells if a transaction is fraud or not. See [app.py](https://github.com/yashwanthm/ai-fraud-detection-demo-api/blob/main/app.py) for details
 
+### About this service
+
+This is an internal platform service that helps other applications interface with the AI Model where, the service accepts an array as follows:
+
+    [distance, ratio_to_median, pin, chip, online]
+
+And responds back with a message
+
+    {
+	    message: "fraud/not fraud"
+    }
+
+Let's understand this by using some example scenarios for the transaction
+-   **distance** - same location as the last transaction (distance=0)
+-   **ration_to_median** - same median price as the last transaction (ratio_to_median=1)
+-   **pin** - using a pin number (pin=1)
+-   **chip** - using the credit card chip (chip=1)
+-   **online** - not an online transaction (online=0)
+
+### Example 1: user buys a coffee
+In this example, the user is buying a coffee. The parameters given to the model are:
+-   same location as the last transaction (distance=0)
+-   same median price as the last transaction (ratio_to_median=1)
+-   using a pin number (pin=1)
+-   using the credit card chip (chip=1)
+-   not an online transaction (online=0)
+
+`[0.0, 1.0, 1.0, 1.0, 0.0]`
+
+### Example 2: fraudulent transaction
+In this example, someone stole the user's credit card and is buying something online. The parameters given to the model are:
+
+-   very far away from the last transaction (distance=100)
+-   median price similar to the last transaction (ratio_to_median=1.2)
+-   not using a pin number (pin=0)
+-   not using the credit card chip (chip=0)
+-   is an online transaction (online=1)
+
+`[100, 1.2, 0.0, 0.0, 1.0]`
