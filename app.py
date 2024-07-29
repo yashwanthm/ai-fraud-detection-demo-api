@@ -37,7 +37,7 @@ def rest_request(data):
     response_dict = response.json()
     return response_dict['outputs'][0]['data']
 
-# Get all items
+# Endpoint
 @app.route('/', methods=['POST'])
 def check_fraud():
     data = request.json
