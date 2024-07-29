@@ -43,15 +43,19 @@ Let's understand this by using some example scenarios for the transaction
 - Get into the Developer view 
 - Click "+Add"
 - Select "Import from Git"
+![Import from Git](images/import-from-git.png)
 - Paste the URL of the repo
 - Enter the port as 5000
-- Click on Create
+- Click on Create 
+![Deployment](images/import-from-git.png)
+- Wait for the build to progress, once it's complete, your should see something like this on the topology view
+![Topology](images/topology.png)
 - Try a POST request on your terminal
     ```
     curl -X POST http://<ENTER YOUR ENDPOINT> -H "Content-Type: application/json" -d '{"data": [100, 1.2, 0.0, 0.0, 1.0]}' 
     ```
 
-### Example 1: Not a fradulent transaction
+### Case 1: Not a fradulent transaction
 In this example, the user is buying a coffee. The parameters given to the model are:
 -   same location as the last transaction (distance=0)
 -   same median price as the last transaction (ratio_to_median=1)
@@ -65,7 +69,7 @@ In this example, the user is buying a coffee. The parameters given to the model 
 curl -X POST http://<ENTER YOUR ENDPOINT> -H "Content-Type: application/json" -d '{"data": [0.0, 1.0, 1.0, 1.0, 0.0]}'
 ```
 
-### Example 2: fraudulent transaction
+### Case 2: fraudulent transaction
 In this example, someone stole the user's credit card and is buying something online. The parameters given to the model are:
 
 -   very far away from the last transaction (distance=100)
@@ -78,3 +82,5 @@ In this example, someone stole the user's credit card and is buying something on
 ```
 curl -X POST http://<ENTER YOUR ENDPOINT> -H "Content-Type: application/json" -d '{"data": [100, 1.2, 0.0, 0.0, 1.0]}'
 ```
+
+Try your own requests and have some fun :)
