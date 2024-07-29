@@ -36,7 +36,22 @@ Let's understand this by using some example scenarios for the transaction
 -   **chip** - using the credit card chip (chip=1)
 -   **online** - not an online transaction (online=0)
 
-### Example 1: user buys a coffee
+## Deploying this service
+
+- Copy the URL of this repo
+- Login into your [OpenShift Developer Sandbox](https://console.redhat.com/openshift/sandbox)
+- Get into the Developer view 
+- Click "+Add"
+- Select "Import from Git"
+- Paste the URL of the repo
+- Enter the port as 5000
+- Click on Create
+- Try a POST request on your terminal
+    ```
+    curl -X POST http://<ENTER YOUR ENDPOINT> -H "Content-Type: application/json" -d '{"data": [100, 1.2, 0.0, 0.0, 1.0]}' 
+    ```
+
+### Example 1: Not a fradulent transaction
 In this example, the user is buying a coffee. The parameters given to the model are:
 -   same location as the last transaction (distance=0)
 -   same median price as the last transaction (ratio_to_median=1)
@@ -45,6 +60,10 @@ In this example, the user is buying a coffee. The parameters given to the model 
 -   not an online transaction (online=0)
 
 `[0.0, 1.0, 1.0, 1.0, 0.0]`
+
+```
+curl -X POST http://<ENTER YOUR ENDPOINT> -H "Content-Type: application/json" -d '{"data": [0.0, 1.0, 1.0, 1.0, 0.0]}'
+```
 
 ### Example 2: fraudulent transaction
 In this example, someone stole the user's credit card and is buying something online. The parameters given to the model are:
@@ -56,3 +75,6 @@ In this example, someone stole the user's credit card and is buying something on
 -   is an online transaction (online=1)
 
 `[100, 1.2, 0.0, 0.0, 1.0]`
+```
+curl -X POST http://<ENTER YOUR ENDPOINT> -H "Content-Type: application/json" -d '{"data": [100, 1.2, 0.0, 0.0, 1.0]}'
+```
