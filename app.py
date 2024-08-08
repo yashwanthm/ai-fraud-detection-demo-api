@@ -42,11 +42,7 @@ def rest_request(data):
             }
         ]
     }
-    print(infer_url)
-    print(json_data)
     response = requests.post(infer_url, json=json_data)
-    print('response')
-    print(response)
     response_dict = response.json()
     return response_dict['outputs'][0]['data']
 
