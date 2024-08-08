@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Read the environment variable
-ENV = os.getenv('FLASK_ENV', 'production')  # Default to 'development' if not set
+ENV = os.getenv('FLASK_ENV', 'development')  # Default to 'development' if not set
 
 deployed_model_name = "fraud-detection"  # Ensure this is the same as the model name you gave on OpenShift AI
 if ENV == 'development':
