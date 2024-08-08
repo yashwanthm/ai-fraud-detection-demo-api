@@ -18,7 +18,7 @@ ENV = os.getenv('FLASK_ENV', 'production')  # Default to 'development' if not se
 
 deployed_model_name = "fraud-detection" # Ensure that this is same as the model name you gave on OpenShift AI
 if ENV == 'development':
-    rest_url = "https://fraud-detection-ymaheshw-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com" #For local and locations other than the same OpenShift Instance
+    rest_url = "https://fraud-ymaheshw-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com" #For local and locations other than the same OpenShift Instance
 else:
     rest_url = "http://modelmesh-serving:8008" #if the api is deployed to the same OpenShift Instance
 
