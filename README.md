@@ -61,10 +61,11 @@ Let's understand this by using some example scenarios for the transaction
 ![Deployment](images/import-from-git.png)
 - Wait for the build to progress, once it's complete, your should see something like this on the topology view
 ![Topology](images/topology.png)
-- Try a POST request on your terminal
+- Try a POST request
     ```
     curl -X POST http://<ENTER YOUR ENDPOINT> -H "Content-Type: application/json" -d '{"data": [100, 1.2, 0.0, 0.0, 1.0]}' 
     ```
+- Add UI Client - https://github.com/yashwanthm/ai-fraud-detection-client
 
 ### Case 1: Not a fradulent transaction
 In this example, the user is buying a coffee. The parameters given to the model are:
