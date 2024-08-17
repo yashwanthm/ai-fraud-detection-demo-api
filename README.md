@@ -3,6 +3,7 @@ In this demo, we train and deploy a model using OpenShift AI, then integrate it 
 
 You will need to finish the steps in [OpenShift AI tutorial - Fraud detection example](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2-latest/html/openshift_ai_tutorial_-_fraud_detection_example/index) before continuing
 
+
 ![Screenshot](images/overview.png)
 
 
@@ -13,6 +14,13 @@ The fraud detection model evaluates credit card transactions based on factors li
 ## Train and Deploy the AI Model using OpenShift AI
 
 Follow [OpenShift AI tutorial - Fraud detection example](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2-latest/html/openshift_ai_tutorial_-_fraud_detection_example/index) to train and deploy the fraud detection model using OpenShift AI Sandbox without any local setup needed. By the end of 4.2 you will have the applicaiton up and running on OpenShift AI
+
+#### Summary
+- Signup for OpenShift Developer Sandbox at https://developers.redhat.com/developer-sandbox. This will get you access to an OpenShift instance with OpenShift AI
+- Login into OpenShift Sandbox and create an S3 compatible object storage that will serve as model storage for your AI workloads
+- Navigate to OpenShift AI, create a Data Science Project, clone https://github.com/rh-aiservices-bu/fraud-detection.git build and train the model using the Jupyter Notebooks available on the repo
+- By the end of these notebooks you will have your model stored on Minio
+- Go back to OpenShift AI > Data Science Projects > Model Server > Add Model Server > Create OpenVINO Model Server > Add Model > Deploy
 
 ![Model Serving](images/model-serving.png)
 
