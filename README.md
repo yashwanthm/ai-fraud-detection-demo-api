@@ -17,7 +17,7 @@ Follow [OpenShift AI tutorial - Fraud detection example](https://docs.redhat.com
 
 #### Summary
 - Signup for OpenShift Developer Sandbox at https://developers.redhat.com/developer-sandbox. This will get you access to an OpenShift instance with OpenShift AI
-- Login into OpenShift Sandbox and create an S3 compatible object storage that will serve as model storage for your AI workloads
+- Login into OpenShift Sandbox and create an S3 compatible object storage that will serve as model storage for your AI workloads using https://github.com/yashwanthm/ai-platform-demo/blob/main/setup-s3.yaml
 - Navigate to OpenShift AI, create a Data Science Project, clone https://github.com/rh-aiservices-bu/fraud-detection.git build and train the model using the Jupyter Notebooks available on the repo
 - By the end of these notebooks you will have your model stored on Minio
 - Go back to OpenShift AI > Data Science Projects > Model Server > Add Model Server > Create OpenVINO Model Server > Add Model > Deploy
