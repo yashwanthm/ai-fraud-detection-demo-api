@@ -12,20 +12,14 @@ def apply_cors(response):
     response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
     return response
 
-
 # Read the environment variable
 ENV = os.getenv('FLASK_ENV', 'production')  # Default to 'development' if not set
 
 deployed_model_name = "fraud" # Ensure that this is same as the model name you gave on OpenShift AI
-if ENV == 'development':
-    rest_url = "https://fraud-ymaheshw-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com" #For local and locations other than the same OpenShift Instance
-else:
-    rest_url = "http://modelmesh-serving:8008" #if the api is deployed to the same OpenShift Instance
+rest_url = "http://modelmesh-serving:8008" # Model Server endpoint
 
-print(rest_url)
-
-# Construct the inference URL
-infer_url = f"{rest_url}/v2/models/{deployed_model_name}/infer" 
+# Construct the inference URL for our model. Change deployed_moodel_name if you change the name of the model
+infer_url = f"{rest_url}/v2/models/{deployed_model_name}/infer"
 
 #Load the scaler.pkl that contained pre-trained scikit-learn scaler used to standardize or normalize input data. This ensures that the data fed into your model during inference is scaled consistently with how it was during training, improving model accuracy and performance
 import pickle
@@ -45,7 +39,6 @@ def rest_request(data):
         ]
     }
     response = requests.post(infer_url, json=json_data)
-    print('response ', response)
     response_dict = response.json()
     return response_dict['outputs'][0]['data']
 
@@ -53,7 +46,6 @@ def rest_request(data):
 @app.route('/', methods=['POST'])
 def check_fraud():
     data = request.json
-    print(scaler.transform([data]).tolist()[0])
     prediction = rest_request(scaler.transform([data]).tolist()[0]) # place a request to the model server from this service
     threshhold = 0.95
     if (prediction[0] > threshhold):
@@ -61,7 +53,6 @@ def check_fraud():
     else:
         message = 'not fraud'
     return jsonify({'message': message})
-
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
